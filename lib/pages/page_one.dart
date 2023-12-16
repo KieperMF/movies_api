@@ -28,36 +28,53 @@ class _PageOneState extends State<PageOne> {
             const Padding(padding: EdgeInsets.all(16)),
             TextField(
               controller: _text,
-              decoration:const InputDecoration(hintText: "Informe um filme"),
+              decoration: const InputDecoration(hintText: "Movie name"),
             ),
             ElevatedButton(
                 onPressed: () {
                   httpRequest();
                 },
                 child: const Text("Search")),
-            if (movies != null  ) ...[
+            if (movies != null) ...[
               ListView.builder(
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
                   itemCount: movies!.length,
                   itemBuilder: (context, index) {
-                    Column(
-                      children: [
-                        Image(
-                            image: NetworkImage(
-                                'https://image.tmdb.org/t/p/original/${movies![index].poster}'))
-                      ],
-                    );
-
                     return Column(
                       children: [
-                        Image(image: NetworkImage('https://image.tmdb.org/t/p/original/${movies![index].poster}')),
-                        Text(
-                          'Title:\n ${movies![index].title}\n Overview:\n ${movies![index].overview}', style: TextStyle(fontSize: 18),),
+                        const Padding(padding: EdgeInsets.only(top: 10)),
+                        Image(
+                          image: NetworkImage(
+                              'https://image.tmdb.org/t/p/original/${movies![index].poster}'),
+                          height: 300,
+                        ),
+                        const Padding(padding: EdgeInsets.only(top: 10)),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Title: ${movies![index].title}\n ',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Overview:\n ${movies![index].overview}',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                        Padding(padding: EdgeInsets.all(10)),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Release date: ${movies![index].release}',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
                       ],
                     );
                   }),
-              
             ],
           ],
         ),
@@ -67,8 +84,9 @@ class _PageOneState extends State<PageOne> {
 
   httpRequest() async {
     String moviename = _text.text;
+    String search = replaceSpacesWithPlus(moviename);
     Uri url = Uri.parse(
-        "https://api.themoviedb.org/3/search/movie?query=${moviename}&api_key=65eb24d3d4ad7bfdd3aa23d86fc0cf6a");
+        "https://api.themoviedb.org/3/search/movie?query=${search}&api_key=65eb24d3d4ad7bfdd3aa23d86fc0cf6a");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final decode = jsonDecode(response.body)['results'] as List;
@@ -78,5 +96,10 @@ class _PageOneState extends State<PageOne> {
           const SnackBar(content: Text("Erro ao carregar infos")));
     }
     setState(() {});
+  }
+
+  String replaceSpacesWithPlus(String inputString) {
+    String result = inputString.replaceAll(' ', '+');
+    return result;
   }
 }
