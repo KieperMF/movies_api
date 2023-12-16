@@ -15,6 +15,7 @@ class _PageOneState extends State<PageOne> {
   Movie? movie;
   TextEditingController _text = TextEditingController();
   List<Movie>? movies;
+  List<String>? images;
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +25,17 @@ class _PageOneState extends State<PageOne> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Padding(padding: EdgeInsets.all(16)),
             TextField(
               controller: _text,
-              decoration: InputDecoration(hintText: "Informe um filme"),
+              decoration:const InputDecoration(hintText: "Informe um filme"),
             ),
             ElevatedButton(
-                onPressed: () async {
+                onPressed: () {
                   httpRequest();
                 },
-                child: const Text("Pesquisar")),
-
-            if (movies != null) ...[
+                child: const Text("Search")),
+            if (movies != null  ) ...[
               ListView.builder(
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
@@ -42,15 +43,21 @@ class _PageOneState extends State<PageOne> {
                   itemBuilder: (context, index) {
                     Column(
                       children: [
-                        Image(image: NetworkImage(movies![index].poster))
+                        Image(
+                            image: NetworkImage(
+                                'https://image.tmdb.org/t/p/original/${movies![index].poster}'))
                       ],
                     );
 
-                    return ListTile(
-                      title: Text(
-                          'Title:\n ${movies![index].title}\n Overview:\n ${movies![index].overview}'),
+                    return Column(
+                      children: [
+                        Image(image: NetworkImage('https://image.tmdb.org/t/p/original/${movies![index].poster}')),
+                        Text(
+                          'Title:\n ${movies![index].title}\n Overview:\n ${movies![index].overview}', style: TextStyle(fontSize: 18),),
+                      ],
                     );
                   }),
+              
             ],
           ],
         ),
