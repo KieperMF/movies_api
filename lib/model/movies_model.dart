@@ -21,11 +21,5 @@ class Movie{
     poster: json['poster_path']);
   }
 
-  Map<String, dynamic> toJson()=>{
-    "title": title,
-    "overview": overview,
-    "popularity": popularity,
-    "release_date": release,
-    "poster_path": poster,
-  };
+ 
 }

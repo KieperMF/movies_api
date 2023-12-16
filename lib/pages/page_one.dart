@@ -29,25 +29,29 @@ class _PageOneState extends State<PageOne> {
               decoration: InputDecoration(hintText: "Informe um filme"),
             ),
             ElevatedButton(
-                onPressed: ()async {
+                onPressed: () async {
                   httpRequest();
                 },
                 child: const Text("Pesquisar")),
-            if (movies == null) ...[
-              Text('title'),
-            ],
+
             if (movies != null) ...[
               ListView.builder(
-                shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
-                itemCount: movies!.length,
-                itemBuilder: (context, index){
-                  return ListTile(
-                    title: Text('Title:\n ${movies![index].title}\n Overview:\n ${movies![index].overview}'),
-                    
-                  );
-                })
-            ]
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  itemCount: movies!.length,
+                  itemBuilder: (context, index) {
+                    Column(
+                      children: [
+                        Image(image: NetworkImage(movies![index].poster))
+                      ],
+                    );
+
+                    return ListTile(
+                      title: Text(
+                          'Title:\n ${movies![index].title}\n Overview:\n ${movies![index].overview}'),
+                    );
+                  }),
+            ],
           ],
         ),
       ),
@@ -61,10 +65,7 @@ class _PageOneState extends State<PageOne> {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final decode = jsonDecode(response.body)['results'] as List;
-      List<dynamic> jsonDataList = decode;
-      List<Movie> movieslist =
-          jsonDataList.map((json) => Movie.fromJson(json)).toList();
-      movies = movieslist;
+      movies = decode.map((json) => Movie.fromJson(json)).toList();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Erro ao carregar infos")));
