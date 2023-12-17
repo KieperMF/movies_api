@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Movie{
   String title;
   String overview;
@@ -15,11 +17,10 @@ class Movie{
 
   factory Movie.fromJson(Map<String, dynamic> json){
     return Movie(title: json['title'], 
-    overview: json['overview'], 
-    popularity: json['popularity'], 
-    release: json['release_date'], 
-    poster: json['poster_path']);
-  }
-
+      overview: json['overview'], 
+      popularity: json['popularity'], 
+      release: json['release_date'], 
+      poster: json['poster_path']);
+    }
  
 }
