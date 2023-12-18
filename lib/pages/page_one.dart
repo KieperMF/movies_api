@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -38,7 +40,7 @@ class _PageOneState extends State<PageOne> {
             if (movies != null) ...[
               ListView.builder(
                   shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
+                  physics:const BouncingScrollPhysics(),
                   itemCount: movies!.length,
                   itemBuilder: (context, index) {
                     return Column(
@@ -54,22 +56,22 @@ class _PageOneState extends State<PageOne> {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             'Title: ${movies![index].title}\n ',
-                            style: TextStyle(fontSize: 18),
+                            style:const TextStyle(fontSize: 18),
                           ),
                         ),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             'Overview:\n ${movies![index].overview}',
-                            style: TextStyle(fontSize: 18),
+                            style:const TextStyle(fontSize: 18),
                           ),
                         ),
-                        Padding(padding: EdgeInsets.all(10)),
+                        const Padding(padding: EdgeInsets.all(10)),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             'Release date: ${repleceDate(movies![index].release)}',
-                            style: TextStyle(fontSize: 18),
+                            style:const TextStyle(fontSize: 18),
                           ),
                         ),
                       ],
@@ -87,7 +89,7 @@ class _PageOneState extends State<PageOne> {
       String moviename = text.text;
       String search = replaceSpacesWithPlus(moviename);
       Uri url = Uri.parse(
-          "https://api.themoviedb.org/3/search/movie?query=${search}&api_key=65eb24d3d4ad7bfdd3aa23d86fc0cf6a");
+          "https://api.themoviedb.org/3/search/movie?query=$search&api_key=65eb24d3d4ad7bfdd3aa23d86fc0cf6a");
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
