@@ -83,22 +83,25 @@ class _PageOneState extends State<PageOne> {
   }
 
   httpRequest() async {
-    String moviename = text.text;
-    String search = replaceSpacesWithPlus(moviename);
-    Uri url = Uri.parse(
-        "https://api.themoviedb.org/3/search/movie?query=${search}&api_key=65eb24d3d4ad7bfdd3aa23d86fc0cf6a");
-    final response = await http.get(url);
-   /* if(response.contentLength == null){
-       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Não temos esse filme em nosso")));
-    }*/
-    if (response.statusCode == 200) {
-      final decode = jsonDecode(response.body)['results'] as List;
-      movies = decode.map((json) => Movie.fromJson(json)).toList();
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Erro ao carregar infos")));
+    try {
+      String moviename = text.text;
+      String search = replaceSpacesWithPlus(moviename);
+      Uri url = Uri.parse(
+          "https://api.themoviedb.org/3/search/movie?query=${search}&api_key=65eb24d3d4ad7bfdd3aa23d86fc0cf6a");
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        final decode = jsonDecode(response.body)['results'] as List;
+        movies = decode.map((json) => Movie.fromJson(json)).toList();
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Erro ao carregar API")));
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Não temos esse filme em nosso acervo")));
     }
+
     setState(() {});
   }
 
@@ -107,7 +110,7 @@ class _PageOneState extends State<PageOne> {
     return result;
   }
 
-  String repleceDate(String input){
+  String repleceDate(String input) {
     String result = input.replaceAll("-", "/");
     return result;
   }
