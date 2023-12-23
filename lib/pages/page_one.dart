@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies_api/model/movies_model.dart';
+import 'package:movies_api/model/urlBase_model.dart';
 
 class PageOne extends StatefulWidget {
   const PageOne({super.key});
@@ -14,14 +15,14 @@ class PageOne extends StatefulWidget {
 }
 
 class _PageOneState extends State<PageOne> {
-  Movie? movie;
   TextEditingController text = TextEditingController();
   List<Movie>? movies;
-  List<String>? images;
+  urlBase url = urlBase();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Cine Flutter'),),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -88,9 +89,9 @@ class _PageOneState extends State<PageOne> {
     try {
       String moviename = text.text;
       String search = replaceSpacesWithPlus(moviename);
-      Uri url = Uri.parse(
-          "https://api.themoviedb.org/3/search/movie?query=$search&api_key=65eb24d3d4ad7bfdd3aa23d86fc0cf6a");
-      final response = await http.get(url);
+      Uri uri = Uri.parse(
+          "${url.url}$search${url.key}&language=pt-BR");
+      final response = await http.get(uri);
 
       if (response.statusCode == 200) {
         final decode = jsonDecode(response.body)['results'] as List;
