@@ -16,14 +16,28 @@ class _PageTwoState extends State<PageTwo> {
   List<Movie>? movies;
   urlBase url = urlBase();
   @override
+  void initState(){
+    super.initState();
+    nowPlayingRequest();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Filmes em Cartaz"),
+        title: const Text("Filmes em Cartaz"),
       ),
       body: Center(
         child: Column(
-          children: [],
+          children: [
+            if(movies!=null)...[
+              Text("${movies![0].title}"),
+              Text("${movies![1].title}"),
+              Text("${movies![2].title}"),
+            ],
+            FloatingActionButton(onPressed: (){
+              nowPlayingRequest();
+            }, child: Icon(Icons.refresh),)
+          ],
         ),
       ),
     );
@@ -42,6 +56,7 @@ class _PageTwoState extends State<PageTwo> {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Erro ao carregar dados")));
     }
+    setState(() {});
   }
   repleceDate(String date){
     String result = date.replaceAll('-', "/");
