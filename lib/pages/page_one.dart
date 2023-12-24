@@ -90,7 +90,7 @@ class _PageOneState extends State<PageOne> {
       String moviename = text.text;
       String search = replaceSpacesWithPlus(moviename);
       Uri uri = Uri.parse(
-          "${url.url}$search${url.key}&language=pt-BR");
+          "${url.urlSeach}$search${url.key}&language=pt-BR");
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
