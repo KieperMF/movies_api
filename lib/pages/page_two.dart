@@ -39,7 +39,7 @@ class _PageTwoState extends State<PageTwo> {
           if (movies != null) ...[
             ListView.builder(
                 shrinkWrap: true,
-                physics:const BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: movies!.length,
                 itemBuilder: (context, index) {
                   return Column(
@@ -60,10 +60,5 @@ class _PageTwoState extends State<PageTwo> {
         ],
       )),
     );
-  }
-  
-  repleceDate(String date) {
-    String result = date.replaceAll('-', "/");
-    return result;
   }
 }
