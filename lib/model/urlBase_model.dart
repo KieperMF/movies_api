@@ -2,6 +2,7 @@
 //se nao especificar a lingua, por padrão vai vir em ingles
 
 //URl de filmes lançados rencetemente: https://api.themoviedb.org/3/movie/now_playing?&api_key=65eb24d3d4ad7bfdd3aa23d86fc0cf6a
+
 class urlBase{
   String urlSeach;
   String urlTopMovies;

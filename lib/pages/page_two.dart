@@ -39,7 +39,7 @@ class _PageTwoState extends State<PageTwo> {
           if (movies != null) ...[
             ListView.builder(
                 shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
+                physics:const BouncingScrollPhysics(),
                 itemCount: movies!.length,
                 itemBuilder: (context, index) {
                   return Column(

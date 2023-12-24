@@ -36,7 +36,7 @@ class _PageOneState extends State<PageOne> {
             ElevatedButton(
                 onPressed: () {
                   httpRequest();
-                },
+                  },
                 child: const Text("Search")),
             if (movies != null) ...[
               ListView.builder(
@@ -49,7 +49,7 @@ class _PageOneState extends State<PageOne> {
                         const Padding(padding: EdgeInsets.only(top: 10)),
                         Image(
                           image: NetworkImage(
-                              'https://image.tmdb.org/t/p/original/${movies![index].poster}'),
+                              '${url.poster}${movies![index].poster}'),
                           height: 300,
                         ),
                         const Padding(padding: EdgeInsets.only(top: 10)),
