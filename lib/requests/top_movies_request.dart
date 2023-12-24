@@ -16,6 +16,6 @@ nowPlayingRequest() async {
         return movies;
       }
     } catch (e) {
-      print("Erro ao carregar dados");
+      print("Erro ao carregar informações");
     }
   }
