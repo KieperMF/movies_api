@@ -22,7 +22,7 @@ class _PageOneState extends State<PageOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Cine Flutter'),),
+      appBar: AppBar(title: const Text('Pesquisar'),),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +31,7 @@ class _PageOneState extends State<PageOne> {
             const Padding(padding: EdgeInsets.all(16)),
             TextField(
               controller: text,
-              decoration: const InputDecoration(hintText: "Movie name"),
+              decoration: const InputDecoration(hintText: "Vingadores.."),
             ),
             ElevatedButton(
                 onPressed: () {
@@ -56,14 +56,14 @@ class _PageOneState extends State<PageOne> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'Title: ${movies![index].title}\n ',
+                            'Titulo: ${movies![index].title}\n ',
                             style:const TextStyle(fontSize: 18),
                           ),
                         ),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'Overview:\n ${movies![index].overview}',
+                            'Sinopse:\n ${movies![index].overview}',
                             style:const TextStyle(fontSize: 18),
                           ),
                         ),
@@ -71,7 +71,7 @@ class _PageOneState extends State<PageOne> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'Release date: ${repleceDate(movies![index].release)}',
+                            'Data de Lançamento: ${repleceDate(movies![index].release)}',
                             style:const TextStyle(fontSize: 18),
                           ),
                         ),
@@ -90,7 +90,7 @@ class _PageOneState extends State<PageOne> {
       String moviename = text.text;
       String search = replaceSpacesWithPlus(moviename);
       Uri uri = Uri.parse(
-          "${url.urlSeach}$search${url.key}&language=pt-BR");
+          "${url.urlSeach}$search${url.key}${url.languageBr}");
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
