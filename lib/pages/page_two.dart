@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_api/model/urlBase_model.dart';
+import 'package:movies_api/pages/movie_page.dart';
 import 'package:movies_api/pages/page_one.dart';
 import 'package:movies_api/requests/top_movies_request.dart';
 
@@ -11,20 +12,25 @@ class PageTwo extends StatefulWidget {
 }
 
 class _PageTwoState extends State<PageTwo> {
-  urlBase url = urlBase();
   @override
-  void initState() {
+  initState() {
     super.initState();
     nowPlayingRequest();
     setState(() {});
   }
 
+  urlBase url = urlBase();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Lançamentos"),
         actions: [
+          IconButton(
+              onPressed: () {
+                nowPlayingRequest();
+              },
+              icon: Icon(Icons.refresh)),
           IconButton(
               onPressed: () {
                 Navigator.push(context,
@@ -34,31 +40,55 @@ class _PageTwoState extends State<PageTwo> {
         ],
       ),
       body: SingleChildScrollView(
-          child: Column(
-        children: [
-          if (movies != null) ...[
-            ListView.builder(
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                itemCount: movies!.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      SizedBox(
-                        width: 300,
-                        child: Image(
-                            image: NetworkImage(
-                                "${url.poster}${movies![index].poster}")),
-                      ),
-                      Text(movies![index].title),
-                      const Padding(padding: EdgeInsets.all(10)),
-                      Text(movies![index].overview),
-                    ],
-                  );
-                }),
+        child: Column(
+          children: [
+            FutureBuilder(
+              future: nowPlayingRequest(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (movies != null && movies!.isNotEmpty) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: movies!.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const MoviePage(),
+                                  ),
+                                );
+                                movieSelec = movies![index];
+                              },
+                              child: Image(
+                                image: NetworkImage(
+                                  "${url.poster}${movies![index].poster}",
+                                ),
+                              ),
+                            ),
+                            Text(movies![index].title),
+                            const Padding(padding: EdgeInsets.all(10)),
+                          ],
+                        );
+                      },
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Erro ao carregar filmes")));
+                    return const Text("");
+                  }
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
           ],
-        ],
-      )),
+        ),
+      ),
     );
   }
 }
