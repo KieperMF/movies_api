@@ -79,7 +79,7 @@ class _PageOneState extends State<PageOne> {
                     );
                   }),
             ]else ...[
-              CircularProgressIndicator()
+              const CircularProgressIndicator()
             ],
           ],
         ),

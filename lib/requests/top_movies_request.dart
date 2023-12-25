@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:movies_api/model/movies_model.dart';
@@ -19,7 +21,7 @@ nowPlayingRequest() async {
         return movies;
       }
   } catch (e) {
-    print("Erro ao carregar informações${e}");
+    print("Erro ao carregar informações$e");
   }
 }
 

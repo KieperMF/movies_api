@@ -30,7 +30,7 @@ class _PageTwoState extends State<PageTwo> {
               onPressed: () {
                 nowPlayingRequest();
               },
-              icon: Icon(Icons.refresh)),
+              icon: const Icon(Icons.refresh)),
           IconButton(
               onPressed: () {
                 Navigator.push(context,
@@ -55,7 +55,7 @@ class _PageTwoState extends State<PageTwo> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            
+
                             ElevatedButton(
                               onPressed: () {
                                 Navigator.push(
@@ -85,7 +85,7 @@ class _PageTwoState extends State<PageTwo> {
                   }
                 } else {
                   
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 }
               },
             ),

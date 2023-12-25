@@ -12,7 +12,7 @@ class _MoviePageState extends State<MoviePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Informações"),),
+      appBar: AppBar(title:const Text("Informações"),),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -21,7 +21,7 @@ class _MoviePageState extends State<MoviePage> {
               "${url.poster}${movieSelec!.poster}"
             )),
             const Padding(padding: EdgeInsets.all(10)),
-            Text("Titulo: "+movieSelec!.title),
+            Text("Titulo: ${movieSelec!.title}"),
             const Padding(padding: EdgeInsets.all(10)),
             Text("Sinopse: ${movieSelec!.overview}"),
             const Padding(padding: EdgeInsets.all(10)),
