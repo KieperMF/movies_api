@@ -39,7 +39,8 @@ class _PageTwoState extends State<PageTwo> {
               icon: const Icon(Icons.search))
         ],
       ),
-      body: SingleChildScrollView(
+      body:Center(
+        child: SingleChildScrollView(
         child: Column(
           children: [
             FutureBuilder(
@@ -54,6 +55,7 @@ class _PageTwoState extends State<PageTwo> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
+                            
                             ElevatedButton(
                               onPressed: () {
                                 Navigator.push(
@@ -82,6 +84,7 @@ class _PageTwoState extends State<PageTwo> {
                     return const Text("");
                   }
                 } else {
+                  
                   return CircularProgressIndicator();
                 }
               },
@@ -89,6 +92,8 @@ class _PageTwoState extends State<PageTwo> {
           ],
         ),
       ),
+      ),
+       
     );
   }
 }
