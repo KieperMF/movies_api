@@ -55,7 +55,6 @@ class _PageTwoState extends State<PageTwo> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-
                             ElevatedButton(
                               onPressed: () {
                                 Navigator.push(
@@ -72,7 +71,7 @@ class _PageTwoState extends State<PageTwo> {
                                 ),
                               ),
                             ),
-                            Text(movies![index].title),
+                            Text(movies![index].title, style: const TextStyle(fontSize: 16),),
                             const Padding(padding: EdgeInsets.all(10)),
                           ],
                         );
@@ -84,7 +83,6 @@ class _PageTwoState extends State<PageTwo> {
                     return const Text("");
                   }
                 } else {
-                  
                   return const CircularProgressIndicator();
                 }
               },
