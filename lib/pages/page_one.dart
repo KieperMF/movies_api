@@ -46,7 +46,7 @@ class _PageOneState extends State<PageOne> {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        const Padding(padding: EdgeInsets.only(top: 10)),
+                        const Padding(padding: EdgeInsets.only(top: 14)),
                         Image(
                           image: NetworkImage(
                               '${url.poster}${movies![index].poster}'),
@@ -87,8 +87,7 @@ class _PageOneState extends State<PageOne> {
 
   httpRequest() async {
     try {
-      String moviename = text.text;
-      String search = replaceSpacesWithPlus(moviename);
+      String search = replaceSpacesWithPlus(text.text);
       Uri uri = Uri.parse(
           "${url.urlSeach}$search${url.key}${url.languageBr}");
       final response = await http.get(uri);

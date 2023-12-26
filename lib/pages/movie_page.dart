@@ -12,14 +12,20 @@ class _MoviePageState extends State<MoviePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:const Text("Informações"),),
+      appBar: AppBar(title:const Text("Informações"), backgroundColor: Colors.blueGrey,),
+      backgroundColor: Colors.blueGrey,
       body: SingleChildScrollView(
         child: Column(
           children: [
             if(movieSelec != null)...[
-              Image(image: NetworkImage(
+              Padding(padding: EdgeInsets.all(14)),
+              SizedBox(
+                width: 230,
+                child: Image(image: NetworkImage(
               "${url.poster}${movieSelec!.poster}"
             )),
+              ),
+              
             const Padding(padding: EdgeInsets.all(10)),
             Text("Titulo: ${movieSelec!.title}"),
             const Padding(padding: EdgeInsets.all(10)),
