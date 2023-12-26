@@ -31,13 +31,13 @@ class _PageOneState extends State<PageOne> {
             const Padding(padding: EdgeInsets.all(16)),
             TextField(
               controller: text,
-              decoration: const InputDecoration(hintText: "Vingadores.."),
+              decoration: const InputDecoration(hintText: "Batman.."),
             ),
             ElevatedButton(
                 onPressed: () {
                   httpRequest();
                   },
-                child: const Text("Search")),
+                child: const Text("Pesquisar")),
             if (movies != null) ...[
               ListView.builder(
                   shrinkWrap: true,
@@ -78,9 +78,7 @@ class _PageOneState extends State<PageOne> {
                       ],
                     );
                   }),
-            ]else ...[
-              const CircularProgressIndicator()
-            ],
+            ]
           ],
         ),
       ),
