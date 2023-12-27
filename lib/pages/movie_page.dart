@@ -12,33 +12,31 @@ class _MoviePageState extends State<MoviePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:const Text("Informações"), backgroundColor: Colors.blueGrey,),
+      appBar: AppBar(
+        title: const Text("Informações"),
+        backgroundColor: Colors.blueGrey,
+      ),
       backgroundColor: Colors.blueGrey,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            if(movieSelec != null)...[
-              Padding(padding: EdgeInsets.all(14)),
-              SizedBox(
-                width: 230,
-                child: Image(image: NetworkImage(
-              "${url.poster}${movieSelec!.poster}"
-            )),
-              ),
-              
-            const Padding(padding: EdgeInsets.all(10)),
-            Text("Titulo: ${movieSelec!.title}"),
-            const Padding(padding: EdgeInsets.all(10)),
-            Text("Sinopse: ${movieSelec!.overview}"),
-            const Padding(padding: EdgeInsets.all(10)),
-            Text("Data de Lançamento: ${repleceDate(movieSelec!.release)}"),
-            const Padding(padding: EdgeInsets.all(10)),
-            Text("Pontuação de Popularidade: ${movieSelec!.popularity}")
+            if (movieSelec != null) ...[
+              const Padding(padding: EdgeInsets.all(14)),
+               Image.network("${url.poster}${movieSelec!.background}", 
+               height: 250,
+               ),
+              const Padding(padding: EdgeInsets.all(10)),
+              Text("Titulo: ${movieSelec!.title}", style:const TextStyle(fontSize: 17),),
+              const Padding(padding: EdgeInsets.all(10)),
+              Text("Sinopse: ${movieSelec!.overview}", style:const TextStyle(fontSize: 17),),
+              const Padding(padding: EdgeInsets.all(10)),
+              Text("Data de Lançamento: ${repleceDate(movieSelec!.release)}", style:const TextStyle(fontSize: 17),),
+              const Padding(padding: EdgeInsets.all(10)),
+              Text("Pontuação de Popularidade: ${movieSelec!.popularity}", style:const TextStyle(fontSize: 17),)
             ],
           ],
         ),
       ),
     );
   }
-  
 }

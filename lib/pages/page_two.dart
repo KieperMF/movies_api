@@ -41,7 +41,8 @@ class _PageTwoState extends State<PageTwo> {
       ),
       body:Center(
         child: SingleChildScrollView(
-        child: Column(
+        child: Center(
+          child: Column(
           children: [
             FutureBuilder(
               future: nowPlayingRequest(),
@@ -72,7 +73,11 @@ class _PageTwoState extends State<PageTwo> {
                                 ),
                               ),
                             ),
-                            Text(movies![index].title, style: const TextStyle(fontSize: 16),),
+                            /*Align(
+                              alignment: Alignment.center,
+                              child: Text(movies![index].title, style: const TextStyle(fontSize: 18),),
+                            ),*/
+                            
                             const Padding(padding: EdgeInsets.all(10)),
                           ],
                         );
@@ -90,6 +95,7 @@ class _PageTwoState extends State<PageTwo> {
             ),
           ],
         ),
+        )
       ),
       ),
        
