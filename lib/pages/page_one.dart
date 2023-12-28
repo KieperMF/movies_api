@@ -81,7 +81,7 @@ class _PageOneState extends State<PageOne> {
                           );
                         });
                   }else if(text.text == ""){
-                    return const Text("Insira um filme para pesquisa");
+                    return const Text("");
                   }else{
                     return const Text("Não possuimos esse filme em nosso acervo");
                   }

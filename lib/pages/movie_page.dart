@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_api/requests/top_movies_request.dart';
+import 'package:movies_api/requests/now_playing.dart';
 
 class MoviePage extends StatefulWidget {
   const MoviePage({super.key});

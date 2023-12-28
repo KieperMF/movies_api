@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_api/model/urlBase_model.dart';
 import 'package:movies_api/pages/movie_page.dart';
 import 'package:movies_api/pages/page_one.dart';
-import 'package:movies_api/requests/top_movies_request.dart';
+import 'package:movies_api/requests/now_playing.dart';
 
 class PageTwo extends StatefulWidget {
   const PageTwo({super.key});
