@@ -32,12 +32,6 @@ class _PageTwoState extends State<PageTwo> {
                 nowPlayingRequest();
               },
               icon: const Icon(Icons.refresh)),
-          IconButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const PageOne()));
-              },
-              icon: const Icon(Icons.search))
         ],
       ),
       body:Center(

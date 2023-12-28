@@ -17,7 +17,12 @@ class _TopMovieState extends State<TopMovie> {
         child: Column(
           children: [
             if(topMovie != null)...[
-              Image.network("${url.poster}${topMovie!.background}"),
+              const Padding(padding: EdgeInsets.all(10)),
+              SizedBox(
+                child: Image.network("${url.poster}${topMovie!.background}"),
+              ),
+              const Padding(padding: EdgeInsets.all(10)),
+              Text("Titulo: ${topMovie!.title}", style:const TextStyle(fontSize: 16),),
             ]
           ],
         ),
