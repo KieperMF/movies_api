@@ -35,7 +35,7 @@ class _Top_RatedState extends State<Top_Rated> {
                     if (topMovies != null) {
                       return ListView.builder(
                           shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
+                          physics:const BouncingScrollPhysics(),
                           itemCount: topMovies!.length,
                           itemBuilder: (context, index) {
                             return Column(
