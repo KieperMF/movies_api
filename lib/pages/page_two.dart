@@ -73,10 +73,6 @@ class _PageTwoState extends State<PageTwo> {
                                 ),
                               ),
                             ),
-                            /*Align(
-                              alignment: Alignment.center,
-                              child: Text(movies![index].title, style: const TextStyle(fontSize: 18),),
-                            ),*/
                             
                             const Padding(padding: EdgeInsets.all(10)),
                           ],
