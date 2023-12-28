@@ -25,17 +25,26 @@ class _PageOneState extends State<PageOne> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Padding(padding: EdgeInsets.all(16)),
-            TextField(
-              controller: text,
-              decoration: const InputDecoration(hintText: "Batman.."),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(padding: EdgeInsets.only(left: 10)),
+                SizedBox(
+                  width: 260,
+                  child: TextField(
+                    controller: text,
+                    decoration: const InputDecoration(hintText: "Batman.."),
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        httpRequest(text.text);
+                      });
+                    },
+                    child: const Text("Pesquisar")),
+              ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    httpRequest(text.text);
-                  });
-                },
-                child: const Text("Pesquisar")),
             FutureBuilder(
               future: httpRequest(text.text),
               builder: (context, snapshot) {
@@ -80,10 +89,11 @@ class _PageOneState extends State<PageOne> {
                             ],
                           );
                         });
-                  }else if(text.text == ""){
+                  } else if (text.text == "") {
                     return const Text("");
-                  }else{
-                    return const Text("Não possuimos esse filme em nosso acervo");
+                  } else {
+                    return const Text(
+                        "Não possuimos esse filme em nosso acervo");
                   }
                 } else {
                   return const CircularProgressIndicator();

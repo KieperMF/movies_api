@@ -91,8 +91,10 @@ class _PageTwoState extends State<PageTwo> {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.amber,
+        height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             IconButton(onPressed: (){
               Navigator.push(context,

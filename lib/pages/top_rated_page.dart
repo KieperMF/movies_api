@@ -27,6 +27,7 @@ class _Top_RatedState extends State<Top_Rated> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             FutureBuilder(future: TopMoviesRequest(), 
             builder: (context, snapshot){

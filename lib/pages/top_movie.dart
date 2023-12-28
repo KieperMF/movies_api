@@ -23,6 +23,12 @@ class _TopMovieState extends State<TopMovie> {
               ),
               const Padding(padding: EdgeInsets.all(10)),
               Text("Titulo: ${topMovie!.title}", style:const TextStyle(fontSize: 16),),
+              const Padding(padding: EdgeInsets.all(10)),
+              Text("Sinopse: ${topMovie!.overview}", style: TextStyle(fontSize: 16),),
+              const Padding(padding: EdgeInsets.all(10)),
+              Text("Popularidade: ${topMovie!.popularity}"),
+              const Padding(padding: EdgeInsets.all(10)),
+              Text("Data de Lançamento: ${topMovie!.release}"),
             ]
           ],
         ),
