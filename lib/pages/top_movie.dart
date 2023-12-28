@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies_api/requests/top_rated_request.dart';
 
+//tela do filme selecionado na aba de melhores filmes
+
 class TopMovie extends StatefulWidget {
   const TopMovie({super.key});
 
@@ -24,11 +26,14 @@ class _TopMovieState extends State<TopMovie> {
               const Padding(padding: EdgeInsets.all(10)),
               Text("Titulo: ${topMovie!.title}", style:const TextStyle(fontSize: 16),),
               const Padding(padding: EdgeInsets.all(10)),
-              Text("Sinopse: ${topMovie!.overview}", style: TextStyle(fontSize: 16),),
+              SizedBox(
+                width: 350,
+                child: Text("Sinopse: ${topMovie!.overview}", style:const TextStyle(fontSize: 16),),
+              ),
               const Padding(padding: EdgeInsets.all(10)),
-              Text("Popularidade: ${topMovie!.popularity}"),
+              Text("Popularidade: ${topMovie!.popularity}", style:const TextStyle(fontSize: 16),),
               const Padding(padding: EdgeInsets.all(10)),
-              Text("Data de Lançamento: ${topMovie!.release}"),
+              Text("Data de Lançamento: ${repleceDate(topMovie!.release)}", style:const TextStyle(fontSize: 16),),
             ]
           ],
         ),

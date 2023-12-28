@@ -10,10 +10,8 @@ class Top_Rated extends StatefulWidget {
 }
 
 class _Top_RatedState extends State<Top_Rated> {
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     TopMoviesRequest();
   }
@@ -25,43 +23,51 @@ class _Top_RatedState extends State<Top_Rated> {
         title: const Text("Melhores Filmes"),
       ),
       body: SingleChildScrollView(
+          child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            FutureBuilder(future: TopMoviesRequest(), 
-            builder: (context, snapshot){
-              if(snapshot.connectionState == ConnectionState.done){
-                if(topMovies != null){
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
-                    itemCount: topMovies!.length,
-                    itemBuilder: (context, index){
-                      return Column(
-                        children: [
-                           const Padding(padding: EdgeInsets.all(10)),
-                          ElevatedButton(onPressed: (){
-                            Navigator.push(context, 
-                            MaterialPageRoute(builder: (context)=> const TopMovie()));
-                            topMovie = topMovies![index];
-                          }, child: Image(image: 
-                          NetworkImage("${url.poster}${topMovies![index].poster}"),)),
-                          const Padding(padding: EdgeInsets.all(10)),
-                        ],
-                      );
-                    });
-                }else{
-                  return const Text("Erro ao carregar informações");
-                }
-              }else{
-                return const CircularProgressIndicator();
-              }
-            })
+            FutureBuilder(
+                future: TopMoviesRequest(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (topMovies != null) {
+                      return ListView.builder(
+                          shrinkWrap: true,
+                          physics: BouncingScrollPhysics(),
+                          itemCount: topMovies!.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                const Padding(padding: EdgeInsets.all(10)),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const TopMovie()));
+                                      topMovie = topMovies![index];
+                                    },
+                                    child: Image(
+                                      image: NetworkImage(
+                                          "${url.poster}${topMovies![index].poster}"),
+                                    )),
+                                const Padding(padding: EdgeInsets.all(10)),
+                              ],
+                            );
+                          });
+                    } else {
+                      return const Text("Erro ao carregar informações");
+                    }
+                  } else {
+                    return const CircularProgressIndicator();
+                  }
+                })
           ],
         ),
-      ),
-      
+      )),
     );
   }
 }

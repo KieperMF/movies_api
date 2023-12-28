@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies_api/requests/now_playing_request.dart';
 
+//tela do filme selecionado na aba de lançamentos
+
 class MoviePage extends StatefulWidget {
   const MoviePage({super.key});
 
@@ -28,7 +30,10 @@ class _MoviePageState extends State<MoviePage> {
               const Padding(padding: EdgeInsets.all(10)),
               Text("Titulo: ${movieSelec!.title}", style:const TextStyle(fontSize: 17),),
               const Padding(padding: EdgeInsets.all(10)),
-              Text("Sinopse: ${movieSelec!.overview}", style:const TextStyle(fontSize: 17),),
+              SizedBox(
+                width: 350,
+                child: Text("Sinopse: ${movieSelec!.overview}", style:const TextStyle(fontSize: 17),),
+              ),
               const Padding(padding: EdgeInsets.all(10)),
               Text("Data de Lançamento: ${repleceDate(movieSelec!.release)}", style:const TextStyle(fontSize: 17),),
               const Padding(padding: EdgeInsets.all(10)),

@@ -18,3 +18,8 @@ TopMoviesRequest() async{
     return topMovies;
   }
 }
+
+String repleceDate(String input) {
+    String result = input.replaceAll("-", "/");
+    return result;
+  }
