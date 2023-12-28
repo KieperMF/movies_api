@@ -11,7 +11,7 @@ List<Movie>? movies;
 Movie? movieSelec;
 nowPlayingRequest() async {
   try {
-    Uri uri = Uri.parse("${url.urlTopMovies}${url.key}${url.languageBr}");
+    Uri uri = Uri.parse("${url.urlNowPlaying}${url.key}${url.languageBr}");
     final response = await http.get(uri);
     
       final decode = jsonDecode(response.body)['results'] as List;

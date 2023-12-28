@@ -5,6 +5,7 @@
 
 class urlBase{
   String urlSeach;
+  String urlNowPlaying;
   String urlTopMovies;
   String key;
   String languageBr;
@@ -13,7 +14,8 @@ class urlBase{
 
   urlBase({
    this.urlSeach = 'https://api.themoviedb.org/3/search/movie?query=',
-   this.urlTopMovies ="https://api.themoviedb.org/3/movie/now_playing?",
+   this.urlNowPlaying ="https://api.themoviedb.org/3/movie/now_playing?",
+   this.urlTopMovies = "https://api.themoviedb.org/3/movie/top_rated?",
     this.key = "&api_key=65eb24d3d4ad7bfdd3aa23d86fc0cf6a",
     this.languageBr = "&language=pt-BR",
     this.languageEn = "&language=en-EN",
