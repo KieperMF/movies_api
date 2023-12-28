@@ -5,6 +5,8 @@ import 'package:movies_api/pages/page_one.dart';
 import 'package:movies_api/pages/top_rated_page.dart';
 import 'package:movies_api/requests/now_playing_request.dart';
 
+//PAGINA DE FILMES EM CARTAZ
+
 class PageTwo extends StatefulWidget {
   const PageTwo({super.key});
 

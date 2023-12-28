@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movies_api/pages/top_movie.dart';
 import 'package:movies_api/requests/top_rated_request.dart';
 
+//PAGINA DE FILMES MAIS BEM AVALIADOS
+
 class Top_Rated extends StatefulWidget {
   const Top_Rated({super.key});
 
