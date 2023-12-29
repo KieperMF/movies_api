@@ -36,10 +36,12 @@ class _PageTwoState extends State<PageTwo> {
               icon: const Icon(Icons.refresh)),
         ],
       ),
-      body:Center(
-        child: SingleChildScrollView(
+      body: Container(
+        color: Colors.grey,
           padding:const EdgeInsets.all(20),
-        child: Center(
+        child: SingleChildScrollView(
+          
+          child: Center(
           child: Column(
           children: [
             FutureBuilder(
@@ -56,12 +58,15 @@ class _PageTwoState extends State<PageTwo> {
                           children: [
                             const Padding(padding: EdgeInsets.only(top: 14)),
                             ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.grey,
+                              ),
                               onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => const MoviePage(),
-                                  ),
+                                  ),  
                                 );
                                 movieSelec = movies![index];
                               },
@@ -71,8 +76,6 @@ class _PageTwoState extends State<PageTwo> {
                                 ),
                               ),
                             ),
-                            
-                            const Padding(padding: EdgeInsets.all(10)),
                           ],
                         );
                       },
@@ -90,10 +93,10 @@ class _PageTwoState extends State<PageTwo> {
           ],
         ),
         ),
-      ),
+        )
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.amber,
+        color: Colors.blue[700],
         height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -102,10 +105,10 @@ class _PageTwoState extends State<PageTwo> {
             IconButton(onPressed: (){
               Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const PageOne()));
-            }, icon: const Icon(Icons.search)),
+            }, icon: const Icon(Icons.search), color: Colors.white,),
             IconButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Top_Rated()));
-            }, icon: const Icon(Icons.star_border))
+            }, icon: const Icon(Icons.star_border), color: Colors.white,)
           ],
         ),
       ), 
