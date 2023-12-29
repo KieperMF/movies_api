@@ -31,12 +31,11 @@ class _PageOneState extends State<PageOne> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Padding(padding: EdgeInsets.only(left: 10)),
                 SizedBox(
                   width: 220,
                   child: TextField(
                     controller: text,
-                    decoration: const InputDecoration(hintText: "Batman.."),
+                    decoration: const InputDecoration(hintText: "Batman..."),
                   ),
                 ),
                 ElevatedButton(
@@ -45,7 +44,7 @@ class _PageOneState extends State<PageOne> {
                         httpRequest(text.text);
                       });
                     },
-                    child: const Icon(Icons.search)),
+                    child: const Icon(Icons.search),),
               ],
             ),
             FutureBuilder(
@@ -87,7 +86,6 @@ class _PageOneState extends State<PageOne> {
                                   ],
                                 ),
                               ),
-                              
                             ],
                           );
                         });
