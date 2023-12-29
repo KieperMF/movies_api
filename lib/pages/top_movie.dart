@@ -15,8 +15,10 @@ class _TopMovieState extends State<TopMovie> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Informações"),
+        title: const Text("Informações",style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.blueGrey[900],
       ),
+      backgroundColor: Colors.grey[800],
       body: SingleChildScrollView(
         padding:const EdgeInsets.all(20),
         child: Column(
@@ -31,7 +33,7 @@ class _TopMovieState extends State<TopMovie> {
                 width: 350,
                 child: Text(
                   "Titulo: ${topMovie!.title}",
-                  style: const TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
               const Padding(padding: EdgeInsets.all(10)),
@@ -39,18 +41,18 @@ class _TopMovieState extends State<TopMovie> {
                 width: 350,
                 child: Text(
                   "Sinopse: ${topMovie!.overview}",
-                  style: const TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
               const Padding(padding: EdgeInsets.all(10)),
               Text(
                 "Popularidade: ${topMovie!.popularity}",
-                style: const TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16, color: Colors.white),
               ),
               const Padding(padding: EdgeInsets.all(10)),
               Text(
                 "Data de Lançamento: ${repleceDate(topMovie!.release)}",
-                style: const TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16, color: Colors.white),
               ),
             ]
           ],

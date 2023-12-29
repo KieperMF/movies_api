@@ -22,55 +22,60 @@ class _Top_RatedState extends State<Top_Rated> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Melhores Filmes"),
+        title: const Text("Melhores Filmes",style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.blueGrey[900],
       ),
+      backgroundColor: Colors.grey[800],
       body: SingleChildScrollView(
-        padding:const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            FutureBuilder(
-                future: TopMoviesRequest(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    if (topMovies != null) {
-                      return ListView.builder(
-                          shrinkWrap: true,
-                          physics:const BouncingScrollPhysics(),
-                          itemCount: topMovies!.length,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                const Padding(padding: EdgeInsets.all(10)),
-                                ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const TopMovie()));
-                                      topMovie = topMovies![index];
-                                    },
-                                    child: Image(
-                                      image: NetworkImage(
-                                          "${url.poster}${topMovies![index].poster}"),
-                                    )),
-                                const Padding(padding: EdgeInsets.all(10)),
-                              ],
-                            );
-                          });
-                    } else {
-                      return const Text("Erro ao carregar informações");
-                    }
-                  } else {
-                    return const CircularProgressIndicator();
-                  }
-                })
-          ],
-        ),
-      )),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                FutureBuilder(
+                    future: TopMoviesRequest(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        if (topMovies != null) {
+                          return ListView.builder(
+                              shrinkWrap: true,
+                              physics: const BouncingScrollPhysics(),
+                              itemCount: topMovies!.length,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    const Padding(padding: EdgeInsets.all(10)),
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.grey[800],
+                                        ),
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const TopMovie()));
+                                          topMovie = topMovies![index];
+                                        },
+                                        child: Image(
+                                          image: NetworkImage(
+                                              "${url.poster}${topMovies![index].poster}"),
+                                        )),
+                                    const Padding(padding: EdgeInsets.all(10)),
+                                  ],
+                                );
+                              });
+                        } else {
+                          return const Text("Erro ao carregar informações");
+                        }
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    })
+              ],
+            ),
+          )),
     );
   }
 }
