@@ -22,6 +22,7 @@ class _PageOneState extends State<PageOne> {
         title: const Text('Pesquisar'),
       ),
       body: SingleChildScrollView(
+        padding:const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,9 +31,9 @@ class _PageOneState extends State<PageOne> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(padding: EdgeInsets.only(left: 10)),
+                const Padding(padding: EdgeInsets.only(left: 10)),
                 SizedBox(
-                  width: 260,
+                  width: 220,
                   child: TextField(
                     controller: text,
                     decoration: const InputDecoration(hintText: "Batman.."),
@@ -44,7 +45,7 @@ class _PageOneState extends State<PageOne> {
                         httpRequest(text.text);
                       });
                     },
-                    child: const Text("Pesquisar")),
+                    child: const Icon(Icons.search)),
               ],
             ),
             FutureBuilder(
@@ -60,34 +61,33 @@ class _PageOneState extends State<PageOne> {
                           return Column(
                             children: [
                               const Padding(padding: EdgeInsets.only(top: 14)),
-                              Image(
+                              SizedBox(
+                                width: 350,
+                                child: Column(
+                                  children: [
+                                    Image(
                                 image: NetworkImage(
                                     '${url.poster}${movies![index].poster}'),
                                 height: 300,
                               ),
                               const Padding(padding: EdgeInsets.only(top: 10)),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
+                              Text(
                                   'Titulo: ${movies![index].title}\n ',
                                   style: const TextStyle(fontSize: 18),
                                 ),
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
+                              Text(
                                   'Sinopse:\n ${movies![index].overview}',
                                   style: const TextStyle(fontSize: 18),
                                 ),
-                              ),
                               const Padding(padding: EdgeInsets.all(10)),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
+                              Text(
                                   'Data de Lançamento: ${repleceDate(movies![index].release)}',
                                   style: const TextStyle(fontSize: 18),
                                 ),
+                                  ],
+                                ),
                               ),
+                              
                             ],
                           );
                         });

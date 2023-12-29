@@ -38,6 +38,7 @@ class _PageTwoState extends State<PageTwo> {
       ),
       body:Center(
         child: SingleChildScrollView(
+          padding:const EdgeInsets.all(20),
         child: Center(
           child: Column(
           children: [

@@ -25,6 +25,7 @@ class _Top_RatedState extends State<Top_Rated> {
         title: const Text("Melhores Filmes"),
       ),
       body: SingleChildScrollView(
+        padding:const EdgeInsets.all(20),
           child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

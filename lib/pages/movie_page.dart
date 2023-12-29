@@ -20,24 +20,46 @@ class _MoviePageState extends State<MoviePage> {
       ),
       backgroundColor: Colors.blueGrey,
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             if (movieSelec != null) ...[
               const Padding(padding: EdgeInsets.all(14)),
-               Image.network("${url.poster}${movieSelec!.background}", 
-               height: 250,
-               ),
-              const Padding(padding: EdgeInsets.all(10)),
-              Text("Titulo: ${movieSelec!.title}", style:const TextStyle(fontSize: 17),),
+              Image.network(
+                "${url.poster}${movieSelec!.background}",
+                height: 250,
+              ),
               const Padding(padding: EdgeInsets.all(10)),
               SizedBox(
                 width: 350,
-                child: Text("Sinopse: ${movieSelec!.overview}", style:const TextStyle(fontSize: 17),),
+                child: Text(
+                  "Titulo: ${movieSelec!.title}",
+                  style: const TextStyle(fontSize: 17),
+                ),
               ),
               const Padding(padding: EdgeInsets.all(10)),
-              Text("Data de Lançamento: ${repleceDate(movieSelec!.release)}", style:const TextStyle(fontSize: 17),),
+              SizedBox(
+                width: 350,
+                child: Text(
+                  "Sinopse: ${movieSelec!.overview}",
+                  style: const TextStyle(fontSize: 17),
+                ),
+              ),
               const Padding(padding: EdgeInsets.all(10)),
-              Text("Pontuação de Popularidade: ${movieSelec!.popularity}", style:const TextStyle(fontSize: 17),)
+              SizedBox(
+                width: 350,
+                child: Text(
+                  "Data de Lançamento: ${repleceDate(movieSelec!.release)}",
+                  style: const TextStyle(fontSize: 17),
+                ),
+              ),
+              const Padding(padding: EdgeInsets.all(10)),
+              SizedBox(
+                  width: 350,
+                  child: Text(
+                    "Pontuação de Popularidade: ${movieSelec!.popularity}",
+                    style: const TextStyle(fontSize: 17),
+                  ))
             ],
           ],
         ),
