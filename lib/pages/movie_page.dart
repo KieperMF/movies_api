@@ -16,9 +16,9 @@ class _MoviePageState extends State<MoviePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Informações", style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.blueGrey[900],
+        backgroundColor: Colors.grey[800],
       ),
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Colors.grey[900],
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(

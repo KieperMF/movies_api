@@ -19,8 +19,10 @@ class _PageOneState extends State<PageOne> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pesquisar'),
+        title: const Text('Pesquisar',style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.grey[800],
       ),
+      backgroundColor: Colors.grey[900],
       body: SingleChildScrollView(
         padding:const EdgeInsets.all(20),
         child: Column(
@@ -35,7 +37,8 @@ class _PageOneState extends State<PageOne> {
                   width: 220,
                   child: TextField(
                     controller: text,
-                    decoration: const InputDecoration(hintText: "Batman..."),
+                    decoration: const InputDecoration(hintText: "Batman...", hintStyle: TextStyle(color: Colors.white)),
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
                 ElevatedButton(
@@ -72,16 +75,16 @@ class _PageOneState extends State<PageOne> {
                               const Padding(padding: EdgeInsets.only(top: 10)),
                               Text(
                                   'Titulo: ${movies![index].title}\n ',
-                                  style: const TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18, color: Colors.white),
                                 ),
                               Text(
                                   'Sinopse:\n ${movies![index].overview}',
-                                  style: const TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18, color: Colors.white),
                                 ),
                               const Padding(padding: EdgeInsets.all(10)),
                               Text(
                                   'Data de Lançamento: ${repleceDate(movies![index].release)}',
-                                  style: const TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18, color: Colors.white),
                                 ),
                                   ],
                                 ),

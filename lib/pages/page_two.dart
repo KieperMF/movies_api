@@ -35,10 +35,10 @@ class _PageTwoState extends State<PageTwo> {
               },
               icon: const Icon(Icons.refresh), color: Colors.white,),
         ],
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.grey[800],
       ),
       body: Container(
-        color: Colors.grey[800],
+        color: Colors.grey[900],
           padding:const EdgeInsets.all(20),
         child: SingleChildScrollView(
           
@@ -60,7 +60,7 @@ class _PageTwoState extends State<PageTwo> {
                             const Padding(padding: EdgeInsets.only(top: 14)),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.grey[800],
+                                backgroundColor: Colors.grey[900],
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -97,7 +97,7 @@ class _PageTwoState extends State<PageTwo> {
         )
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.black87,
+        color: Colors.grey[800],
         height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

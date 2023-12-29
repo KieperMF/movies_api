@@ -23,9 +23,9 @@ class _Top_RatedState extends State<Top_Rated> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Melhores Filmes",style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.blueGrey[900],
+        backgroundColor: Colors.grey[800],
       ),
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Colors.grey[900],
       body: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Center(
@@ -48,7 +48,7 @@ class _Top_RatedState extends State<Top_Rated> {
                                     const Padding(padding: EdgeInsets.all(10)),
                                     ElevatedButton(
                                         style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.grey[800],
+                                          backgroundColor: Colors.grey[900],
                                         ),
                                         onPressed: () {
                                           Navigator.push(
