@@ -27,17 +27,18 @@ class _PageTwoState extends State<PageTwo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Lançamentos"),
+        title: const Text("Lançamentos", style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
               onPressed: () {
                 nowPlayingRequest();
               },
-              icon: const Icon(Icons.refresh)),
+              icon: const Icon(Icons.refresh), color: Colors.white,),
         ],
+        backgroundColor: Colors.black87,
       ),
       body: Container(
-        color: Colors.grey,
+        color: Colors.grey[800],
           padding:const EdgeInsets.all(20),
         child: SingleChildScrollView(
           
@@ -59,7 +60,7 @@ class _PageTwoState extends State<PageTwo> {
                             const Padding(padding: EdgeInsets.only(top: 14)),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.grey,
+                                backgroundColor: Colors.grey[800],
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -96,7 +97,7 @@ class _PageTwoState extends State<PageTwo> {
         )
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.blue[700],
+        color: Colors.black87,
         height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

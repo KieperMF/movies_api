@@ -15,10 +15,10 @@ class _MoviePageState extends State<MoviePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Informações"),
-        backgroundColor: Colors.blueGrey,
+        title: const Text("Informações", style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.blueGrey[900],
       ),
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.grey[800],
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -34,7 +34,7 @@ class _MoviePageState extends State<MoviePage> {
                 width: 350,
                 child: Text(
                   "Titulo: ${movieSelec!.title}",
-                  style: const TextStyle(fontSize: 17),
+                  style: const TextStyle(fontSize: 17, color: Colors.white),
                 ),
               ),
               const Padding(padding: EdgeInsets.all(10)),
@@ -42,7 +42,7 @@ class _MoviePageState extends State<MoviePage> {
                 width: 350,
                 child: Text(
                   "Sinopse: ${movieSelec!.overview}",
-                  style: const TextStyle(fontSize: 17),
+                  style: const TextStyle(fontSize: 17, color: Colors.white),
                 ),
               ),
               const Padding(padding: EdgeInsets.all(10)),
@@ -50,7 +50,7 @@ class _MoviePageState extends State<MoviePage> {
                 width: 350,
                 child: Text(
                   "Data de Lançamento: ${repleceDate(movieSelec!.release)}",
-                  style: const TextStyle(fontSize: 17),
+                  style: const TextStyle(fontSize: 17, color: Colors.white),
                 ),
               ),
               const Padding(padding: EdgeInsets.all(10)),
@@ -58,7 +58,7 @@ class _MoviePageState extends State<MoviePage> {
                   width: 350,
                   child: Text(
                     "Pontuação de Popularidade: ${movieSelec!.popularity}",
-                    style: const TextStyle(fontSize: 17),
+                    style: const TextStyle(fontSize: 17, color: Colors.white),
                   ))
             ],
           ],
