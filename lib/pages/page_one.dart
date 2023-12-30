@@ -34,7 +34,7 @@ class _PageOneState extends State<PageOne> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
-                  width: 220,
+                  width: 200,
                   child: TextField(
                     controller: text,
                     decoration: const InputDecoration(hintText: "Batman...", hintStyle: TextStyle(color: Colors.white)),
