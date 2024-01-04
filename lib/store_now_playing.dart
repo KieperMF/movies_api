@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_api/model/movies_model.dart';
 import 'package:movies_api/model/urlBase_model.dart';
 
+//notifica a tela quando houver alteraçao
 class PlayingStore extends ChangeNotifier {
   urlBase url = urlBase();
   List<Movie>? movies;
@@ -19,8 +20,6 @@ class PlayingStore extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       print("Erro ao carregar informações$e");
-      movies = [];
-        notifyListeners();
     }
   }
 }
