@@ -22,7 +22,10 @@ class _Top_RatedState extends State<Top_Rated> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Melhores Filmes",style: TextStyle(color: Colors.white),),
+        title: const Text(
+          "Melhores Filmes",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.grey[800],
       ),
       backgroundColor: Colors.grey[900],
@@ -60,7 +63,29 @@ class _Top_RatedState extends State<Top_Rated> {
                                         },
                                         child: Image(
                                           image: NetworkImage(
-                                              "${url.poster}${topMovies![index].poster}"),
+                                            "${url.poster}${topMovies![index].poster}",
+                                          ),
+                                          loadingBuilder: (context, child,
+                                              loadingProgress) {
+                                            if (loadingProgress == null) {
+                                              return child;
+                                            } else {
+                                              return Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  value: loadingProgress
+                                                              .expectedTotalBytes !=
+                                                          null
+                                                      ? loadingProgress
+                                                              .cumulativeBytesLoaded /
+                                                          (loadingProgress
+                                                                  .expectedTotalBytes ??
+                                                              1)
+                                                      : null,
+                                                ),
+                                              );
+                                            }
+                                          },
                                         )),
                                     const Padding(padding: EdgeInsets.all(10)),
                                   ],

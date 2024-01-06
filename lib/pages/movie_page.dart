@@ -15,7 +15,10 @@ class _MoviePageState extends State<MoviePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Informações", style: TextStyle(color: Colors.white),),
+        title: const Text(
+          "Informações",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.grey[800],
       ),
       backgroundColor: Colors.grey[900],
@@ -27,6 +30,20 @@ class _MoviePageState extends State<MoviePage> {
               const Padding(padding: EdgeInsets.all(14)),
               Image.network(
                 "${url.poster}${movieSelec!.background}",
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                      ),
+                    );
+                  }
+                },
                 height: 250,
               ),
               const Padding(padding: EdgeInsets.all(10)),

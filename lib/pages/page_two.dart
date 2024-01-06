@@ -19,13 +19,13 @@ class _PageTwoState extends State<PageTwo> {
   @override
   void initState() {
     super.initState();
-    _loadMovies(); 
+    _loadMovies();
   }
 
   final _store = PlayingStore();
 
   Future<void> _loadMovies() async {
-    await _store.request(); 
+    await _store.request();
     setState(() {});
   }
 
@@ -73,6 +73,26 @@ class _PageTwoState extends State<PageTwo> {
                                 image: NetworkImage(
                                   "${url.poster}${_store.movies![index].poster}",
                                 ),
+                                loadingBuilder:
+                                    (context, child, loadingProgress) {
+                                  if (loadingProgress == null) {
+                                    return child;
+                                  } else {
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress
+                                                    .expectedTotalBytes !=
+                                                null
+                                            ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                (loadingProgress
+                                                        .expectedTotalBytes ??
+                                                    1)
+                                            : null,
+                                      ),
+                                    );
+                                  }
+                                },
                               ),
                             ),
                           ],
@@ -87,7 +107,6 @@ class _PageTwoState extends State<PageTwo> {
                 );
               }
             }),
-            
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.grey[800],
@@ -96,13 +115,22 @@ class _PageTwoState extends State<PageTwo> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IconButton(onPressed: (){
-              Navigator.push(context,
+            IconButton(
+              onPressed: () {
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const PageOne()));
-            }, icon: const Icon(Icons.search), color: Colors.white,),
-            IconButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Top_Rated()));
-            }, icon: const Icon(Icons.star_border), color: Colors.white,)
+              },
+              icon: const Icon(Icons.search),
+              color: Colors.white,
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Top_Rated()));
+              },
+              icon: const Icon(Icons.star_border),
+              color: Colors.white,
+            )
           ],
         ),
       ),
