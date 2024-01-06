@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies_api/model/urlBase_model.dart';
 import 'package:movies_api/pages/movie_page.dart';
+import 'package:movies_api/pages/page_one.dart';
+import 'package:movies_api/pages/top_rated_page.dart';
 import 'package:movies_api/requests/now_playing_request.dart';
 import 'package:movies_api/store_now_playing.dart';
 
@@ -17,12 +19,13 @@ class _PageTwoState extends State<PageTwo> {
   @override
   void initState() {
     super.initState();
-    _loadMovies(); // Carregue os filmes ao iniciar a tela
+    _loadMovies(); 
   }
 
   final _store = PlayingStore();
+
   Future<void> _loadMovies() async {
-    await _store.request(); // Chame o método request da PlayingStore
+    await _store.request(); 
     setState(() {});
   }
 
@@ -84,6 +87,24 @@ class _PageTwoState extends State<PageTwo> {
                 );
               }
             }),
+            
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.grey[800],
+        height: 60,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            IconButton(onPressed: (){
+              Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const PageOne()));
+            }, icon: const Icon(Icons.search), color: Colors.white,),
+            IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Top_Rated()));
+            }, icon: const Icon(Icons.star_border), color: Colors.white,)
+          ],
+        ),
       ),
     );
   }
