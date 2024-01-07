@@ -20,7 +20,7 @@ class _PageOneState extends State<PageOne> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Pesquisar',
+          'Pesquisar Filme',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.grey[800],
